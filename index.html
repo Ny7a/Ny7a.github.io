@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="css/main.css" />
+    <title>Welcome to My Portfolio</title>
+  </head>
+
+  <body id="bg-img">
+    <!--How do you create a psuedo overlay?-->
+    <header>
+      <!-- Eah div represents 1 line in the menu button -->
+      <div class="menu-btn">
+        <div class="btn-line"></div>
+        <div class="btn-line"></div>
+        <div class="btn-line"></div>
+      </div>
+     <!-- (basically this is the overlay.this is broken into 2 parts split down the screen; menu branding and menu-nav -->
+     <!-- menu-branding holds our picture -->
+     <nav class="menu">
+        <div class="menu-branding">
+          <!--/background img-->
+          <div class="portrait"></div>
+        </div>
+        <!-- menu-nav lists out all of the portfolio pages; home,about me, work, contacts -->
+        <ul class="menu-nav">
+          <li class="nav-item current">
+            <a href="index.html" class="nav-link">
+              Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="about.html" class="nav-link">
+              About Me
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="work.html" class="nav-link">
+              My Work
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="contact.html" class="nav-link">
+              Contact Me
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="home">
+      <h1 class="lg-heading">
+        Nya
+        <span class="text-secondary">Deng</span>
+      </h1>
+      <h2 class="sm-heading">
+        Web Developer, Programmer & Designer
+      </h2>
+      <div class="icons">
+        <a href="https://twitter.com/Nya0071" target="_blank"
+        >
+          <i class="fab fa-twitter fa-2x"></i>
+        </a>
+        <a href="#!">
+          <a href="mailto:deng.nya007@gmail.com">
+
+          <i class="far fa-envelope fa-2x" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/nya-deng-b06a06198"  target="_blank"
+        >
+          <i class="fab fa-linkedin fa-2x"></i>
+        </a>
+        <a href="https://github.com/Ny7a" target="_blank"
+        >
+          <i class="fab fa-github fa-2x"></i>
+        </a>
+      </div>
+    </main>
+
+    <script src="js/main.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15.0.0/dist/smooth-scroll.polyfills.min.js"></script> -->
+    <!-- <script src="scroll.js"></script> -->
+  </body>
+</html>
