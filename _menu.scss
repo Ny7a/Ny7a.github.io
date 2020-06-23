@@ -1,0 +1,144 @@
+//menu button
+.menu-btn {
+  //
+  position: absolute;
+  z-index: 3;
+  right: 35px;
+  top: 35px;
+  cursor: pointer;
+  @include ease0ut;
+
+  .btn-line {
+    // this is the menu button lines
+    width: 28px;
+    height: 3px;
+    margin: 0 0 5px 0; // space in between
+    background: set-text-color($primary-color);
+    @include ease0ut;
+  }
+
+  // Rotate menu lines into an X
+  // use .close because we are styling menu button when it has the class of close:
+  &.close {
+    transform: rotate(180deg); //rotate 180 degrees
+
+    .btn-line {
+      //select each one using nth-child a psuedo selector
+      //line 1; Rotate  (translate repositions while rotate turns it)
+      &:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      // line 2; Hide it
+      &:nth-child(2) {
+        // the 2 stands for the number of the second line
+        opacity: 0; // an opacity of 0 hides it.
+      }
+
+      //line 3; Rotate
+      &:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+      }
+    }
+  }
+}
+
+// menu overlay
+.menu {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  opacity: 0.9;
+  visibility: hidden;
+
+  &.show {
+    visibility: visible;
+  }
+
+  &-branding,
+  &-nav {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    width: 50%;
+    height: 100vh;
+    overflow: hidden;
+  }
+  &-nav {
+    margin: 0;
+    padding: 0;
+    background: darken($primary-color, 5);
+    list-style: none;
+    transform: translate3d(0, -100%, 0);
+    @include ease0ut;
+
+    &.show {
+      //slide in from top
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  //branding side
+  &-branding {
+    background: $primary-color;
+    transform: translate3d(
+      0,
+      100%,
+      0
+    ); //pushing it 100% up to come from the top
+    @include ease0ut;
+
+    &.show {
+      //slide in from top
+      transform: translate3d(0, 0, 0);
+    }
+
+    .portrait {
+      width: 250px;
+      height: 250px;
+      background: url("../img/port8.jpg");
+      background: no-repeat center/ 100% url("../img/port8.jpg");
+      border-radius: 50%; //border radius on 50% makes it circular
+      border: solid 3px $secondary-color; //width style and color
+    }
+  }
+
+  .nav-item {
+    transform: translate3d(600px, 0, 0);
+    @include ease0ut;
+
+    &.show {
+      //slide in from right
+      transform: translate3d(0, 0, 0);
+    }
+
+    &.current > a {
+      color: $secondary-color; // nav item has the class of currrent in the index.html file we use  the current class here to change the color of the navigation links
+    }
+  }
+
+  .nav-link {
+    display: inline-block;
+    position: relative;
+    font-size: 30px;
+    text-transform: uppercase;
+    padding: 1rem 0; // zero for the left and right
+    font-weight: 300;
+    color: set-text-color($primary-color);
+    text-decoration: none; // to cancel any underlining
+    @include ease0ut; //transition!!
+
+    &:hover {
+      // allows the other nav links followiing the home button to turn the same color as the secondary color when you hover over them .
+      color: $secondary-color;
+    }
+  }
+}
+
+//delay each nav item slide by 0.1 seconds
+@for $x from 1 through 4 {
+  // its 1 through 4 bc we have four items.
+  .nav-item:nth-child(#{$x}) {
+    transition-delay: $x * 0.1s;
+  }
+}

@@ -1,0 +1,225 @@
+@import "config";
+@import "menu";
+
+//an astrix * selects alll
+* {
+  box-sizing: border-box;
+}
+// html{
+//   scroll-behavior: smooth;
+// }
+
+body {
+  @include background;
+  background: $primary-color;
+  color: set-text-color(rgba(lighten($primary-color, 2), 0.2));
+  height: 100%;
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+}
+
+//Headings
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 400;
+
+  &.lg-heading {
+    // the '&' allows .lg-heading to be it's own class
+    font-size: 6rem; //rem is a multiplier of html tags font size. rem is the number of pixels. Ex for 16 pixels;  6rem= 6(16)
+  }
+
+  &.sm-heading {
+    margin-bottom: 2rem;
+    padding: 0.2rem 1rem; //0.2 for top&bottom 1rem for left&right
+    //lighten is a sass feature. It takes in 2 parameters; the original(primary)& secondary color. In this case we are lightening the primary-color by 2
+    background: rgba(
+      lighten($primary-color, 2),
+      0.2
+    ); //rgba is a function. 0.5 is the opacity
+  }
+}
+
+a {
+  color: #fff; //changes link color to white
+  text-decoration: none; // takes away the icon & link highlighting and allows it to be the same color as the text
+}
+
+header {
+  position: fixed; // so header (menu button) always stays at the top even while scrolling and minimizing screen
+  z-index: 2; // z index is how close an element is to you. the bigger the z index # is the closer towards you it is
+  width: 100%; // width set to 100 so the heading can stretch across the screen
+}
+
+.text-secondary {
+  color: $secondary-color; // a variable created at the top.
+}
+
+main {
+  padding: 4rem;
+  // height: 100%;
+  min-height: calc(100vh - 60px); // 100vh- height of the footer (60px)
+
+  //nesting:
+  .icons {
+    margin-top: 1rem;
+
+    a {
+      // for each icon wrapped in an 'a' tag  (all of the div class="icons" with links in the index.html file),
+      padding: 0.4rem; // create a padding of 0.4rem in order to add space between each icon.
+
+      &:hover {
+        // we want the secondary color to show when we hover;
+        color: $secondary-color;
+        //transition: all 0.5s ease-out; // This transitions 'all' meaning everything that is transitionable. 0.5s= time it takes. ease-out is the motion
+
+        // the line of code below stores the transition commented out above. the mixin function almost acts as a variable by storing the transition;
+        @include ease0ut();
+      }
+    }
+  }
+  &#home {
+    //any 'main' with home as id will be affected by the next few lines;
+    overflow: hidden; // keeps scrollbars off of homepage
+    h1 {
+      margin-top: 20vh; //vh is veiwport height.
+    }
+  }
+}
+
+.about-info {
+  display: grid; //displays the about info as a grid
+  gap: 30px; //this add some spacing 30px worth
+  grid-template-areas: 
+  // the following few lines act as a visual representation of what we would like to display on our grid
+    "bioimage bio bio"
+    // the bioimage will stretch across one fractional.
+    //the BIO will stretch across 2 fractionals. This grid is a three fractional grid. Its cuts the page into three big slices
+    "job1 job2 job3";
+  // each job takes gets a space.
+  grid-template-columns: repeat(3, 1fr); //repeat 3x 1fr
+
+  .bio-image {
+    grid-area: bioimage;
+    margin: auto;
+    border-radius: 50%; //turns our image into a circle
+    border: $secondary-color 3px solid;
+    background: no-repeat center/ 100% url("../img/port4.jpg");
+    width: 250px;
+    height: 250px;
+  }
+
+  // create the grid areas;
+
+  .bio {
+    grid-area: bio;
+    font-size: 1.5rem;
+  }
+
+  .job-1 {
+    grid-area: job1;
+  }
+
+  .job-2 {
+    grid-area: job2;
+  }
+
+  .job-3 {
+    grid-area: job3;
+  }
+
+  .job {
+    background: lighten($primary-color, 5);
+    padding: 0.5rem;
+    border-bottom: $secondary-color 5px solid;
+  }
+}
+
+//work/Projects
+.projects {
+  display: grid;
+  grid-gap: 0.7rem;
+  grid-template-columns: repeat(
+    3,
+    1fr
+  ); // makes the projects line up three in a row
+
+  //shrink the images down;
+  img {
+    width: 100%;
+    border: 3px #fff solid;
+
+    &:hover {
+      opacity: 0.5; //opacity upon hovering
+      border-color: $secondary-color; //change border color to secondary color upon hovering over
+      @include ease0ut;
+    }
+  }
+}
+
+//contact page
+//make it a flex container. so don't use grid instead use flex
+.boxes {
+  display: flex;
+  flex-wrap: wrap; // so when the boxes wont fit they will go down to the next line
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 1rem;
+
+  div {
+    font-size: 2rem;
+    border: 3px #fff solid;
+    padding: 1.5rem 2.5rem;
+    margin-bottom: 3rem;
+    @include ease0ut;
+
+    &:hover {
+      padding: 0.5rem 1.5rem; //changes the padding upon hovering
+      background: $secondary-color;
+      color: set-text-color(
+        $secondary-color
+      ); // color of the text will use set-text-color functopon & the background will be the secondary color
+      span {
+        color: set-text-color(
+          $secondary-color
+        ); // this keeps the Email. Phone, and Address from blending in with the background
+      }
+    }
+  }
+}
+
+//button styles
+.btn {
+  display: block;
+  padding: 0.5rem 1rem;
+  border: 0;
+  margin-bottom: 0.3rem;
+  &:hover {
+    background: $secondary-color;
+    color: set-text-color($secondary-color);
+  }
+}
+
+.btn-dark {
+  @extend .btn;
+  background: darken($primary-color, 50);
+  color: #fff;
+}
+
+.btn-light {
+  @extend .btn;
+  background: lighten($primary-color, 50);
+  color: #333;
+}
+
+#main-footer {
+  text-align: center;
+  padding: 1rem;
+  background: darken($primary-color, 10);
+  color: set-text-color($primary-color);
+  height: 60px;
+}
+
+@import "mobile";
