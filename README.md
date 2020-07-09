@@ -1,7 +1,6 @@
 # Ny7a.github.io
 
 Hello, welcome to my <a href="https://ny7a.github.io/" target="_blank">portfolio!</a>
- <a href="https://www.w3schools.com" target="_blank">Visit W3Schools</a> 
  I created this using HTML, CSS, SASS, JavaScript and NPM Package Manager.  
 
 The portfolio consists of four main pages; a Home, About, Work, and Contact Me page. 
